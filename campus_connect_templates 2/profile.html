@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!-- SE Lab Template provided by Assistant Prof. Vishesh Panghal -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - Profile</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-light profile-page">
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Campus Connect</h2>
+            <div class="nav-links">
+                <a href="dashboard.html">Home</a>
+                <a href="dashboard.html#events">Events</a>
+                <a href="dashboard.html#groups">Groups</a>
+                <a href="profile.html" class="active" data-testid="nav-profile">Profile</a>
+                <a href="index.html" class="btn btn-outline">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <div class="message-box" data-testid="message-box" hidden></div>
+
+        <!-- Main Profile Info -->
+        <section class="profile-main card">
+            <div class="profile-header-bg"></div>
+            <div class="profile-details-wrapper">
+                <div class="avatar-large"></div>
+                <div class="profile-info">
+                    <h2><span data-testid="profile-name">Student Name</span> <span class="badge">Student</span></h2>
+                    <p class="bio" data-testid="profile-bio">Passionate about web development, AI, and open source. CS batch of '25.</p>
+                    <ul class="profile-meta">
+                        <li>📍 University Campus</li>
+                        <li data-testid="profile-email">student@campus.edu</li>
+                        <li data-testid="profile-github">github.com/student</li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary edit-profile-btn" data-testid="edit-profile-btn">Edit Profile</button>
+            </div>
+        </section>
+
+        <!-- Profile Tabs -->
+        <section class="profile-content">
+            <div class="tabs" role="tablist" aria-label="Profile sections">
+                <button class="tab active" id="tab-posts" role="tab" aria-selected="true" aria-controls="panel-posts" data-testid="tab-posts">My Posts</button>
+                <button class="tab" id="tab-about" role="tab" aria-selected="false" aria-controls="panel-about" data-testid="tab-about">About</button>
+                <button class="tab" id="tab-connections" role="tab" aria-selected="false" aria-controls="panel-connections" data-testid="tab-connections">Connections</button>
+            </div>
+            
+            <div class="card tab-panel active" id="panel-posts" role="tabpanel" aria-labelledby="tab-posts" data-profile-panel="posts">
+                <h3>Recent Activity</h3>
+                <div class="post-feed">
+                    <div class="card post">
+                        <div class="post-content">
+                            <p>Just pushed my final project for the Web Dev course! Check it out! 🚀</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" data-profile-panel="about" hidden>
+                <h3>About <span data-testid="about-name">Student Name</span></h3>
+                <p class="about-intro" data-testid="about-bio">Passionate about web development, AI, and open source.</p>
+                <dl class="detail-grid">
+                    <div><dt>Email</dt><dd data-testid="about-email">student@campus.edu</dd></div>
+                    <div><dt>Branch</dt><dd data-testid="about-branch">Computer Science</dd></div>
+                    <div><dt>Year</dt><dd data-testid="about-year">3rd Year</dd></div>
+                    <div><dt>Department</dt><dd data-testid="about-department">Computer Science &amp; Engineering</dd></div>
+                    <div><dt>Faculty Advisor</dt><dd data-testid="about-faculty">Dr. Meera Kapoor</dd></div>
+                    <div><dt>Campus</dt><dd>University Campus</dd></div>
+                </dl>
+            </div>
+            <div class="card tab-panel" id="panel-connections" role="tabpanel" aria-labelledby="tab-connections" data-profile-panel="connections" hidden>
+                <h3>Campus Connections</h3>
+                <p class="about-intro">Meet students, faculty, and departments across the college.</p>
+                <div class="connection-list">
+                    <article class="connection-item">
+                        <div class="connection-avatar">JD</div>
+                        <div>
+                            <h4>Jane Doe <span class="connection-role">Student</span></h4>
+                            <p>AI &amp; Data Science · 2nd Year</p>
+                            <p>Faculty Advisor: Dr. Arjun Rao</p>
+                            <p>Department of Artificial Intelligence &amp; Data Science</p>
+                        </div>
+                    </article>
+                    <article class="connection-item">
+                        <div class="connection-avatar">JS</div>
+                        <div>
+                            <h4>John Smith <span class="connection-role">Student</span></h4>
+                            <p>Electrical Engineering · 3rd Year</p>
+                            <p>Faculty Advisor: Prof. Kavita Menon</p>
+                            <p>Department of Electrical &amp; Electronics Engineering</p>
+                        </div>
+                    </article>
+                    <article class="connection-item">
+                        <div class="connection-avatar faculty-avatar">MK</div>
+                        <div>
+                            <h4>Dr. Meera Kapoor <span class="connection-role">Faculty</span></h4>
+                            <p>Faculty Advisor · Computer Science &amp; Engineering</p>
+                            <p>Supports student projects, mentoring, and department activities.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Edit Profile Modal -->
+    <div id="editModal" class="modal" data-testid="edit-modal" aria-hidden="true">
+        <div class="modal-content card">
+            <div class="modal-header">
+                <h2>Edit Profile</h2>
+                <span class="close" data-testid="close-modal">&times;</span>
+            </div>
+            <form id="profileForm" class="auth-form">
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" id="fullName" name="fullName" value="Student Name" required data-testid="edit-name">
+                </div>
+                <div class="form-group">
+                    <label for="bio">Bio</label>
+                    <textarea id="bio" name="bio" rows="3" data-testid="edit-bio">Passionate about web development, AI, and open source. CS batch of '25.</textarea>
+                </div>
+                <div class="form-actions" style="margin-top: 1rem;">
+                    <button type="submit" class="btn btn-primary" data-testid="save-profile-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <footer class="site-footer">
+        <p>Campus Connect Template - Designed by Assistant Prof. Vishesh Panghal for SE Lab</p>
+    </footer>
+</body>
+</html>

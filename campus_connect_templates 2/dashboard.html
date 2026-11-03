@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<!-- SE Lab Template provided by Assistant Prof. Vishesh Panghal -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Connect - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="script.js" defer></script>
+</head>
+<body class="bg-light">
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Campus Connect</h2>
+            <div class="nav-links">
+                <a href="dashboard.html" class="active">Home</a>
+                <a href="#events" data-testid="nav-events">Events</a>
+                <a href="#groups" data-testid="nav-groups">Groups</a>
+                <a href="profile.html" class="btn btn-outline" data-testid="nav-profile">Profile</a>
+                <a href="index.html" class="btn btn-outline" data-testid="nav-logout">Logout</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="card profile-summary">
+                <div class="avatar-placeholder"></div>
+                <h3 data-current-user>Student Name</h3>
+                <p data-current-department>Computer Science '25</p>
+                <div class="stats">
+                    <div><strong>42</strong><span>Connections</span></div>
+                    <div><strong>15</strong><span>Posts</span></div>
+                </div>
+            </div>
+            
+            <div class="card upcoming-events">
+                <h3>Upcoming Events</h3>
+                <ul class="event-list" data-testid="event-list">
+                    <li>
+                        <div class="event-date">Oct 29</div>
+                        <div class="event-details">
+                            <h4>Campus Innovation Hackathon</h4>
+                            <p>Innovation Hub</p>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="event-date">Nov 05</div>
+                        <div class="event-details">
+                            <h4>Founders’ Day Celebration</h4>
+                            <p>Central Quadrangle</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <!-- Main Feed -->
+        <section class="feed">
+            <div class="message-box" data-testid="message-box" hidden></div>
+
+            <div class="card create-post">
+                <form id="postForm">
+                    <textarea placeholder="What's happening on campus?" required data-testid="post-input"></textarea>
+                    <div class="post-actions">
+                        <button type="button" class="btn btn-text">Add Photo</button>
+                        <button type="submit" class="btn btn-primary" data-testid="post-submit">Post</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="post-feed" data-testid="post-feed">
+                <!-- Posts are rendered from script.js mock data. -->
+            </div>
+
+            <section class="card campus-section" id="events" aria-labelledby="events-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Around campus</p>
+                        <h2 id="events-heading">College Events</h2>
+                    </div>
+                    <span class="section-note">Meet, learn, and celebrate together</span>
+                </div>
+
+                <div class="event-status-group">
+                    <h3><span class="status-dot upcoming-dot"></span>Upcoming</h3>
+                    <div class="campus-card-grid">
+                        <article class="campus-item">
+                            <span class="item-date">OCT 29</span>
+                            <h4>Campus Innovation Hackathon</h4>
+                            <p>Build creative solutions with students from every department.</p>
+                            <span class="item-location">Innovation Hub · 9:00 AM</span>
+                        </article>
+                        <article class="campus-item">
+                            <span class="item-date">NOV 05</span>
+                            <h4>Founders’ Day Celebration</h4>
+                            <p>Celebrate our college community with performances, food, and awards.</p>
+                            <span class="item-location">Central Quadrangle · 4:00 PM</span>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="event-status-group">
+                    <h3><span class="status-dot ongoing-dot"></span>Ongoing</h3>
+                    <div class="campus-card-grid">
+                        <article class="campus-item">
+                            <span class="item-date">OCT 26–27</span>
+                            <h4>Inter-Department Sports Meet</h4>
+                            <p>Cheer on college teams in the annual athletics and games festival.</p>
+                            <span class="item-location">College Sports Ground · All day</span>
+                        </article>
+                        <article class="campus-item">
+                            <span class="item-date">OCT 26</span>
+                            <h4>Library Research & Book Fair</h4>
+                            <p>Explore new academic resources and meet visiting authors.</p>
+                            <span class="item-location">Central Library · Until 5:00 PM</span>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="event-status-group">
+                    <h3><span class="status-dot completed-dot"></span>Completed</h3>
+                    <div class="campus-card-grid">
+                        <article class="campus-item">
+                            <span class="item-date">OCT 20</span>
+                            <h4>Green Campus Volunteer Day</h4>
+                            <p>Students and staff came together to plant trees across campus.</p>
+                            <span class="item-location">Botanical Garden · Completed</span>
+                        </article>
+                        <article class="campus-item">
+                            <span class="item-date">OCT 18</span>
+                            <h4>AI & Future of Work Talk</h4>
+                            <p>A college lecture and discussion with technology industry guests.</p>
+                            <span class="item-location">Main Auditorium · Completed</span>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card campus-section" id="groups" aria-labelledby="groups-heading">
+                <div class="section-heading">
+                    <div>
+                        <p class="eyebrow">Find your community</p>
+                        <h2 id="groups-heading">Clubs & Groups</h2>
+                    </div>
+                    <span class="section-note">Explore student-led campus communities</span>
+                </div>
+                <div class="campus-card-grid club-grid">
+                    <article class="campus-item club-item">
+                        <span class="club-tag">Technology</span>
+                        <h4>Microsoft Learn Student Ambassadors (MLSA)</h4>
+                        <p>Learn cloud and developer technologies through workshops and projects.</p>
+                    </article>
+                    <article class="campus-item club-item">
+                        <span class="club-tag">Engineering</span>
+                        <h4>IEEE Student Branch</h4>
+                        <p>Connect with engineers and take part in technical talks and competitions.</p>
+                    </article>
+                    <article class="campus-item club-item">
+                        <span class="club-tag">Computing</span>
+                        <h4>ACM Student Chapter</h4>
+                        <p>Practice problem-solving, programming, and computer science research.</p>
+                    </article>
+                    <article class="campus-item club-item">
+                        <span class="club-tag">Innovation</span>
+                        <h4>Robotics & Makers Club</h4>
+                        <p>Design, build, and test robots and hands-on engineering projects.</p>
+                    </article>
+                    <article class="campus-item club-item">
+                        <span class="club-tag">Community</span>
+                        <h4>EcoCampus Club</h4>
+                        <p>Make campus more sustainable through awareness and volunteer activities.</p>
+                    </article>
+                    <article class="campus-item club-item">
+                        <span class="club-tag">Arts & Culture</span>
+                        <h4>Campus Arts Society</h4>
+                        <p>Share your talents in music, dance, theatre, and visual arts.</p>
+                    </article>
+                </div>
+            </section>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>Campus Connect Template - Designed by Assistant Prof. Vishesh Panghal for SE Lab</p>
+    </footer>
+</body>
+</html>
